@@ -21,7 +21,9 @@ export default function App() {
 
   //The About window when the respective button is clicked
   const openAboutWindow = () => {
-    const aboutPath = `../about.html`;
+    const currentPath = window.location.pathname;
+    // Construct the path to the about.html file relative to the current path
+    const aboutPath = currentPath === '/' ? '/about.html' : `${currentPath}/about.html`;
     const about_window = window.open(aboutPath, '_blank');
     // Set the window to the object   
     setAboutWindow(about_window);
