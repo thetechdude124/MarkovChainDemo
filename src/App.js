@@ -19,12 +19,16 @@ export default function App() {
   //Check whether the dictionary has been generated
   let [dictGenerated, setDictGenerated] = useState(false);
 
-  //The About window when the respective button is clicked
   const openAboutWindow = () => {
+    // Dynamically determine the current path
     const currentPath = window.location.pathname;
+    
     // Construct the path to the about.html file relative to the current path
-    const aboutPath = currentPath === '/' ? '/about.html' : `${currentPath}/about.html`;
+    const aboutPath = new URL('about.html', window.location.href).toString();
+  
+    // Open the window
     const about_window = window.open(aboutPath, '_blank');
+    
     // Set the window to the object   
     setAboutWindow(about_window);
   };
